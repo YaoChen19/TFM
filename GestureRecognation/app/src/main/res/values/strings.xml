@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Gesture Recognation</string>
+    <string name="start_recording">Start Recording</string>
+    <string name="record">Record</string>
+    <string name="show_recording">Show Recording</string>
+    <string name="switch_recording">Switch Recording</string>
+    <string-array name="gestures_array">
+        <item>led1</item>
+        <item>led2</item>
+        <item>led3</item>
+        <item>led4</item>
+    </string-array>
+
+</resources>

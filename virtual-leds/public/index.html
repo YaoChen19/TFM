@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual LEDs</title>
+    <style>
+        .led {
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            display: inline-block;
+            border-radius: 50%;
+        }
+        .led1.on { background-color: red; }
+        .led1.off { background-color: darkred; }
+        .led2.on { background-color: green; }
+        .led2.off { background-color: darkgreen; }
+        .led3.on { background-color: blue; }
+        .led3.off { background-color: darkblue; }
+        .led4.on { background-color: yellow; }
+        .led4.off { background-color: goldenrod; }
+        .label {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+    </style>
+    <script>
+        async function fetchStatus() {
+            const response = await fetch('/status');
+            const status = await response.json();
+            updateLED('led1', status.led1);
+            updateLED('led2', status.led2);
+            updateLED('led3', status.led3);
+            updateLED('led4', status.led4);
+        }
+
+        function updateLED(led, state) {
+            document.getElementById(led).className = `led ${led} ${state ? 'on' : 'off'}`;
+            document.getElementById(led + '-label').innerText = state ? 'ON' : 'OFF';
+        }
+
+        async function controlLED(led) {
+            await fetch('/control', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ led })
+            });
+            fetchStatus();
+        }
+
+        setInterval(fetchStatus, 1000);
+    </script>
+</head>
+<body onload="fetchStatus()">
+    <div style="text-align: center;">
+        <div id="led1" class="led led1 off"></div>
+        <div id="led1-label" class="label">OFF</div>
+    </div>
+    <div style="text-align: center;">
+        <div id="led2" class="led led2 off"></div>
+        <div id="led2-label" class="label">OFF</div>
+    </div>
+    <div style="text-align: center;">
+        <div id="led3" class="led led3 off"></div>
+        <div id="led3-label" class="label">OFF</div>
+    </div>
+    <div style="text-align: center;">
+        <div id="led4" class="led led4 off"></div>
+        <div id="led4-label" class="label">OFF</div>
+    </div>
+</body>
+</html>

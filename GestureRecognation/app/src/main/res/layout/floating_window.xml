@@ -1,0 +1,30 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="0dp">
+
+    <RelativeLayout
+        android:id="@+id/backgroundCircle"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/circle_background"
+        android:layout_centerInParent="true">
+
+        <Button
+            android:id="@+id/buttonRecording"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/record_button_background"
+            android:contentDescription="Start Recording" />
+
+        <ImageView
+            android:id="@+id/buttonSwitch"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/baseline_zoom_out_24"
+            android:contentDescription="@string/switch_recording" />
+    </RelativeLayout>
+</RelativeLayout>

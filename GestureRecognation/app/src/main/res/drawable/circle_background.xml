@@ -1,0 +1,7 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <solid android:color="#80FFFFFF"/>
+    <size android:width="100dp" android:height="100dp"/> <!-- 修改这里的尺寸 -->
+    <stroke android:width="2dp" android:color="#000000"/>
+    <corners android:radius="5dp" />
+</shape>
